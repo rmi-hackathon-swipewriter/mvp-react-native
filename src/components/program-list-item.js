@@ -7,9 +7,9 @@ import {
 } from 'react-native'
 import moment from 'moment'
 
-export default function ProgramListItem ({ program }) {
+export default function ProgramListItem ({ program, onSelect }) {
   return (
-    <TouchableHighlight>
+    <TouchableHighlight onPress={onSelect}>
       <View style={styles.program}>
         <Text style={styles.name}>{program.name}</Text>
         <Text style={styles.details}>

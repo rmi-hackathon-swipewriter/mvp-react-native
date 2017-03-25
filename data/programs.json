@@ -28,8 +28,9 @@
     "singedLine": 0.27,
     "netPremium": 22377.6,
     "brokerage": 14918.4,
-    "claimsYTD": 0,
-    "claimsYTDNum": 0,
+
+    "claimsYTD": 400000,
+    "claimsYTDNum": 4,
     "claimsTotal": 22,
     "claimsTotalNum": 1800000
   }
