@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Touch Air Networks PLC",
+    "alias": "TouchAir",
+    "renewal": "2017-04-01",
+    "clientYears": 3.9,
+    "broker": "Marshains PLC",
+    "bokerYears": "2017-04-01",
+    "grossSumInsured": "740000000",
+    "grossPremium": 82880,
+    "singedLine": 0.27,
+    "netPremium": 22377.6,
+    "brokerage": 14918.4,
+    "claimsYTD": 0,
+    "claimsYTDNum": 0,
+    "claimsTotal": 22,
+    "claimsTotalNum": 1800000
+  },
+  {
+    "name": "Touch Air Networks PLC",
+    "alias": "TouchAir",
+    "renewal": "2017-04-01",
+    "clientYears": 3.9,
+    "broker": "Marshains PLC",
+    "bokerYears": "2017-04-01",
+    "grossSumInsured": "740000000",
+    "grossPremium": 82880,
+    "singedLine": 0.27,
+    "netPremium": 22377.6,
+    "brokerage": 14918.4,
+    "claimsYTD": 0,
+    "claimsYTDNum": 0,
+    "claimsTotal": 22,
+    "claimsTotalNum": 1800000
+  }
+]
