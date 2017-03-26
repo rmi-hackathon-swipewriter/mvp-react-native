@@ -19,9 +19,8 @@ export default function Main ({ route, detailRoute, navigator }) {
   const dataSource = ds.cloneWithRows(programs)
   return (
     <View style={styles.container}>
-      <Text style={styles.h1}>
-        Programs
-      </Text>
+      <Text style={styles.h1}>SwipeWriter</Text>
+      <Text style={styles.subtitle}>Programs up for renewal</Text>
       <ListView
         style={styles.list}
         dataSource={dataSource}
@@ -53,13 +52,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    backgroundColor: '#F5FCFF',
     marginTop: 20
   },
   h1: {
     fontSize: 28,
     textAlign: 'center',
-    margin: 20
+    marginTop: 20,
+    marginBottom: 10
+  },
+  subtitle: {
+    textAlign: 'center',
+    fontStyle: 'italic',
+    color: '#999999',
+    marginBottom: 10
   },
   list: {
     margin: 10

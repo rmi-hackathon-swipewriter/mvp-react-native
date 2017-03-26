@@ -11,7 +11,8 @@ export default class SwipeWriter extends Component {
     return (
       <Navigator
         initialRoute={routes.main}
-        renderScene={renderScene} />
+        renderScene={renderScene}
+        configureScene={() => Navigator.SceneConfigs.FloatFromRight} />
     )
   }
 }

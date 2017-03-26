@@ -3,44 +3,172 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   TouchableHighlight
 } from 'react-native'
-import Pie from 'react-native-pie'
+import { PieChart } from '../components'
+import { colors } from '../styles'
+
+// mock data
+import programs from '../../data/programs.json'
 
 export default function Detail ({ program, onBack }) {
+  if (!program) {
+    program = programs[0]
+  }
   return (
     <View style={styles.container}>
-      <TouchableHighlight onPress={onBack}>
-        <Text>Back</Text>
-      </TouchableHighlight>
-      <Text style={styles.h1}>
-        {program.name}
-      </Text>
-      <Text>Alias: {program.alias}</Text>
-      <Text>Renewal: {program.renewal}</Text>
-      <Text>Client years: {program.clientYears}</Text>
-      <Text>Broker: {program.broker}</Text>
-      <Text>Boker years: {program.bokerYears}</Text>
-      <Text>Gross sum insured: {program.grossSumInsured}</Text>
-      <Text>Gross premium: {program.grossPremium}</Text>
-      <Pie
-        radius={100}
-        series={[program.singedLine * 100, (1 - program.singedLine) * 100]}
-        colors={['#36A2EB', '#FFCE56']} />
+      <View style={{ flexDirection: 'row' }}>
+        <TouchableHighlight onPress={onBack} style={styles.back}
+          underlayColor={'transparent'}
+          activeOpacity={0.5}>
+          <Text style={styles.backTitle}>&lt;</Text>
+        </TouchableHighlight>
+        <Text style={styles.h1}>{program.name}</Text>
+      </View>
+      <ScrollView style={styles.details}>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Alias</Text>
+          <Text>{program.alias}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Renewal</Text>
+          <Text>{program.renewal}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Client years</Text>
+          <Text>{program.clientYears}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Broker</Text>
+          <Text>{program.broker}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Boker years</Text>
+          <Text>{program.bokerYears}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Gross sum insured</Text>
+          <Text>{program.grossSumInsured}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Gross premium</Text>
+          <Text>{program.grossPremium}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Signed line</Text>
+          <Text>{program.signedLine * 100}%</Text>
+        </View>
+        <PieChart program={program} style={{ margin: 20 }} />
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Net Premium</Text>
+          <Text>{program.netPremium}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Brokerage</Text>
+          <Text>{program.brokerage}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Claims YTD</Text>
+          <Text>{program.claimsYTD}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Number of claims YTD</Text>
+          <Text>{program.claimsYTDNum}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Claims Total</Text>
+          <Text>{program.claimsTotal}</Text>
+        </View>
+        <View style={styles.row}>
+          <Text style={styles.rowTitle}>Total number of claims</Text>
+          <Text>{program.claimsTotalNum}</Text>
+        </View>
+      </ScrollView>
+      <View style={styles.footer}>
+        <TouchableHighlight
+          onPress={() => {}}
+          underlayColor={'transparent'}
+          activeOpacity={0.5}>
+          <View style={styles.buttonHop}>
+            <Text style={styles.buttonTitle}>Hop</Text>
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => {}}
+          underlayColor={'transparent'}
+          activeOpacity={0.5}>
+          <View style={styles.buttonTop}>
+            <Text style={styles.buttonTitle}>Top</Text>
+          </View>
+        </TouchableHighlight>
+      </View>
     </View>
   )
+}
+
+const button = {
+  justifyContent: 'center',
+  alignItems: 'center',
+  width: 50,
+  height: 50,
+  margin: 10,
+  borderRadius: 10
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
-    backgroundColor: '#F5FCFF',
+    flexDirection: 'column',
     marginTop: 20
   },
   h1: {
+    flex: 1,
     fontSize: 28,
-    textAlign: 'center',
-    margin: 20
+    margin: 10,
+    marginTop: 20,
+    marginBottom: 20
+  },
+  back: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+    width: 20,
+    height: 50,
+    marginLeft: 10
+  },
+  backTitle: {
+    fontSize: 28
+  },
+  details: {
+    margin: 10
+  },
+  row: {
+    flexDirection: 'row',
+    paddingBottom: 5,
+    marginTop: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.grey
+  },
+  rowTitle: {
+    width: 180,
+    fontWeight: 'bold'
+  },
+  footer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    borderTopWidth: 1,
+    borderTopColor: colors.grey
+  },
+  buttonHop: {
+    ...button,
+    backgroundColor: colors.red
+  },
+  buttonTop: {
+    ...button,
+    backgroundColor: colors.green
+  },
+  buttonTitle: {
+    color: colors.white
   }
 })

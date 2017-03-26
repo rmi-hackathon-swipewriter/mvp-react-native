@@ -7,17 +7,26 @@ import {
 } from 'react-native'
 import moment from 'moment'
 
+import { Indicator } from './'
+
 export default function ProgramListItem ({ program, onSelect }) {
   return (
-    <TouchableHighlight onPress={onSelect}>
+    <TouchableHighlight onPress={onSelect}
+      underlayColor={'transparent'}
+      activeOpacity={0.5}>
       <View style={styles.program}>
-        <Text style={styles.name}>{program.name}</Text>
-        <Text style={styles.details}>
-          Renewal: {moment(program.renewal).format('DD-MMM-YYYY')}
-        </Text>
-        <Text style={styles.details}>
-          Broker: {program.broker}
-        </Text>
+        <View style={styles.info}>
+          <Text style={styles.name}>{program.name}</Text>
+          <Text style={styles.details}>
+            Renewal: {moment(program.renewal).format('DD-MMM-YYYY')}
+          </Text>
+          <Text style={styles.details}>
+            Broker: {program.broker}
+          </Text>
+        </View>
+        <View style={styles.indicator}>
+          <Indicator program={program} />
+        </View>
       </View>
     </TouchableHighlight>
   )
@@ -25,8 +34,16 @@ export default function ProgramListItem ({ program, onSelect }) {
 
 const styles = StyleSheet.create({
   program: {
-    height: 100,
-    marginTop: 10
+    flexDirection: 'row',
+    height: 90,
+    marginTop: 5
+  },
+  info: {
+    flex: 1
+  },
+  indicator: {
+    flexDirection: 'column',
+    justifyContent: 'center'
   },
   name: {
     fontSize: 18,
