@@ -30,8 +30,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "SwipeWriter.app"
-               BlueprintName = "SwipeWriter"
-               ReferencedContainer = "container:SwipeWriter.xcodeproj">
+               BlueprintName = "SwypeWriter"
+               ReferencedContainer = "container:SwypeWriter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "SwipeWriterTests.xctest"
-               BlueprintName = "SwipeWriterTests"
-               ReferencedContainer = "container:SwipeWriter.xcodeproj">
+               BuildableName = "SwypeWriterTests.xctest"
+               BlueprintName = "SwypeWriterTests"
+               ReferencedContainer = "container:SwypeWriter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "SwipeWriterTests.xctest"
-               BlueprintName = "SwipeWriterTests"
-               ReferencedContainer = "container:SwipeWriter.xcodeproj">
+               BuildableName = "SwypeWriterTests.xctest"
+               BlueprintName = "SwypeWriterTests"
+               ReferencedContainer = "container:SwypeWriter.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -72,8 +72,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "SwipeWriter.app"
-            BlueprintName = "SwipeWriter"
-            ReferencedContainer = "container:SwipeWriter.xcodeproj">
+            BlueprintName = "SwypeWriter"
+            ReferencedContainer = "container:SwypeWriter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -95,8 +95,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "SwipeWriter.app"
-            BlueprintName = "SwipeWriter"
-            ReferencedContainer = "container:SwipeWriter.xcodeproj">
+            BlueprintName = "SwypeWriter"
+            ReferencedContainer = "container:SwypeWriter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -114,8 +114,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "SwipeWriter.app"
-            BlueprintName = "SwipeWriter"
-            ReferencedContainer = "container:SwipeWriter.xcodeproj">
+            BlueprintName = "SwypeWriter"
+            ReferencedContainer = "container:SwypeWriter.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

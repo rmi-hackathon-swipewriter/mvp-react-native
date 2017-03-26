@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   StyleSheet,
   Text,
@@ -13,35 +13,69 @@ import {
 
 import routes from '../routes'
 import programs from '../../data/programs.json'
+import states from '../../data/states.json'
 
-export default function Main ({ route, detailRoute, navigator }) {
-  const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-  const dataSource = ds.cloneWithRows(programs)
-  return (
-    <View style={styles.container}>
-      <Text style={styles.h1}>SwipeWriter</Text>
-      <Text style={styles.subtitle}>Programs up for renewal</Text>
-      <ListView
-        style={styles.list}
-        dataSource={dataSource}
-        renderRow={(program) =>
-          <ProgramListItem
-            program={program}
-            onSelect={onSelect(program, navigator)} />}
-        renderSeparator={renderSeperator}>
-      </ListView>
-    </View>
-  )
-}
-
-function onSelect (program, navigator) {
-  return () =>
-    navigator.push({
-      ...routes.detail,
-      props: {
-        program
-      }
+export default class Main extends Component {
+  constructor (props) {
+    super(props)
+    this.ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1.status !== r2.status
     })
+    this.state = {
+      programs: programs.map((program, index) => ({
+        ...program,
+        id: index,
+        status: states.INIT
+      }))
+    }
+    this.onSelect = this.onSelect.bind(this)
+    this.onSelectHopOrTop = this.onSelectHopOrTop.bind(this)
+  }
+
+  render () {
+    const { route, detailRoute, navigator } = this.props
+    const { programs } = this.state
+    const dataSource = this.ds.cloneWithRows(programs)
+    return (
+      <View style={styles.container}>
+        <Text style={styles.h1}>SwypeWriter</Text>
+        <Text style={styles.subtitle}>Programs up for renewal</Text>
+        <ListView
+          style={styles.list}
+          dataSource={dataSource}
+          enableEmptySections={true}
+          renderRow={(program) => <ProgramListItem
+              program={program}
+              onSelect={this.onSelect(program, navigator)} />}
+          renderSeparator={renderSeperator}>
+        </ListView>
+      </View>
+    )
+  }
+
+  onSelect (program, navigator) {
+    return () =>
+      navigator.push({
+        ...routes.detail,
+        props: {
+          program,
+          onSelectHopOrTop: this.onSelectHopOrTop(navigator, program)
+        }
+      })
+  }
+
+  onSelectHopOrTop (navigator) {
+    return (selectedProgram, status) => {
+      const programs = this.state.programs
+      .map(program => program.id === selectedProgram.id
+        ? { ...program, status }
+        : program
+      )
+      .filter(program => [states.INIT, states.REVIEW].includes(program.status))
+      this.setState({ programs }, () => navigator.pop(routes.detail))
+    }
+  }
+
 }
 
 function renderSeperator (sectionID: number, rowID: number, adjacentRowHighlighted: bool) {

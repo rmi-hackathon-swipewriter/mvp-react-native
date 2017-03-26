@@ -6,10 +6,12 @@ import {
   TouchableHighlight
 } from 'react-native'
 import moment from 'moment'
-
+import states from '../../data/states.json'
+import { colors } from '../styles'
 import { Indicator } from './'
 
 export default function ProgramListItem ({ program, onSelect }) {
+  const { status } = program
   return (
     <TouchableHighlight onPress={onSelect}
       underlayColor={'transparent'}
@@ -26,6 +28,11 @@ export default function ProgramListItem ({ program, onSelect }) {
         </View>
         <View style={styles.indicator}>
           <Indicator program={program} />
+          <View style={{ height: 20 }}>
+            {status === states.REVIEW &&
+              <Text style={styles.indicatorTitle}>needs review</Text>
+            }
+          </View>
         </View>
       </View>
     </TouchableHighlight>
@@ -43,7 +50,13 @@ const styles = StyleSheet.create({
   },
   indicator: {
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'flex-end'
+  },
+  indicatorTitle: {
+    color: colors.lightGrey,
+    marginTop: 10,
+    fontSize: 10
   },
   name: {
     fontSize: 18,

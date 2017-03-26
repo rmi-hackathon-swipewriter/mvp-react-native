@@ -8,22 +8,18 @@ import {
 } from 'react-native'
 import { PieChart } from '../components'
 import { colors } from '../styles'
+import states from '../../data/states.json'
 
 // mock data
 import programs from '../../data/programs.json'
 
-export default function Detail ({ program, onBack }) {
+export default function Detail ({ program, onBack, onSelectHopOrTop }) {
   if (!program) {
     program = programs[0]
   }
   return (
     <View style={styles.container}>
       <View style={{ flexDirection: 'row' }}>
-        <TouchableHighlight onPress={onBack} style={styles.back}
-          underlayColor={'transparent'}
-          activeOpacity={0.5}>
-          <Text style={styles.backTitle}>&lt;</Text>
-        </TouchableHighlight>
         <Text style={styles.h1}>{program.name}</Text>
       </View>
       <ScrollView style={styles.details}>
@@ -44,8 +40,8 @@ export default function Detail ({ program, onBack }) {
           <Text>{program.broker}</Text>
         </View>
         <View style={styles.row}>
-          <Text style={styles.rowTitle}>Boker years</Text>
-          <Text>{program.bokerYears}</Text>
+          <Text style={styles.rowTitle}>Broker years</Text>
+          <Text>{program.brokerYears}</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.rowTitle}>Gross sum insured</Text>
@@ -87,19 +83,19 @@ export default function Detail ({ program, onBack }) {
       </ScrollView>
       <View style={styles.footer}>
         <TouchableHighlight
-          onPress={() => {}}
+          onPress={() => onSelectHopOrTop(program, states.REVIEW)}
           underlayColor={'transparent'}
           activeOpacity={0.5}>
           <View style={styles.buttonHop}>
-            <Text style={styles.buttonTitle}>Hop</Text>
+            <Text style={styles.buttonTitle}>Reject</Text>
           </View>
         </TouchableHighlight>
         <TouchableHighlight
-          onPress={() => {}}
+          onPress={() => onSelectHopOrTop(program, states.RENEW)}
           underlayColor={'transparent'}
           activeOpacity={0.5}>
           <View style={styles.buttonTop}>
-            <Text style={styles.buttonTitle}>Top</Text>
+            <Text style={styles.buttonTitle}>Accept</Text>
           </View>
         </TouchableHighlight>
       </View>
@@ -128,17 +124,6 @@ const styles = StyleSheet.create({
     margin: 10,
     marginTop: 20,
     marginBottom: 20
-  },
-  back: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'flex-end',
-    width: 20,
-    height: 50,
-    marginLeft: 10
-  },
-  backTitle: {
-    fontSize: 28
   },
   details: {
     margin: 10
