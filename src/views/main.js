@@ -14,6 +14,7 @@ import {
 import routes from '../routes'
 import programs from '../../data/programs.json'
 import states from '../../data/states.json'
+import { colors } from '../styles'
 
 export default class Main extends Component {
   constructor (props) {
@@ -86,7 +87,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'flex-start',
-    marginTop: 20
+    marginTop: 20,
+    backgroundColor: colors.white
   },
   h1: {
     fontSize: 28,
